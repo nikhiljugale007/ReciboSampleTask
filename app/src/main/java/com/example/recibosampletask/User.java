@@ -2,10 +2,19 @@ package com.example.recibosampletask;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "user_table")
 public class User extends BaseObservable {
+	@PrimaryKey(autoGenerate = true)
+	private int id;
+	@ColumnInfo(name = "firstName")
 	private String firstName;
+	@ColumnInfo(name = "lastName")
 	private String lastName;
+	@ColumnInfo(name = "phone")
 	private String phone;
 
 	public User(String firstName, String lastName, String phone) {
@@ -42,5 +51,13 @@ public class User extends BaseObservable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 		notifyPropertyChanged(BR.phone);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
